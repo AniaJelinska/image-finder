@@ -5,13 +5,15 @@ class SearchInput extends Component {
         keyword: "",
     }
     handleChange = (e) => {
+        const value = e.target.value
         this.setState({
-            keyword: e.target.value
+            keyword: value
         });
     };
 
     handleSubmit = (e) => {
-        alert("dziala")
+        e.preventDefault();
+        console.log("dziala")
     }
 
     render() {
@@ -21,7 +23,7 @@ class SearchInput extends Component {
                     <input
                         type="text"
                         placeholder="Search free high-resolution photos"
-                        value={this.state.value}
+                        value={this.state.keyword}
                         onChange={this.handleChange}
                     >
                     </input>
