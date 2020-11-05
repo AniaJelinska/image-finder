@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Unsplash, { toJson } from "unsplash-js";
+
+const unsplash = new Unsplash({
+    accessKey: "PUc2mcO-lkccQgrnP0cU25N6Gu-QP6q5mB4QrQF8GFo",
+});
 
 class SearchInput extends Component {
     state = {
@@ -11,18 +16,24 @@ class SearchInput extends Component {
         });
     };
 
-    handleSubmit = (e) => {
+    handleSearchImages = async (e) => {
         e.preventDefault();
-        console.log("dziala")
+        unsplash.search
+            .photos(this.state.keyword)
+            .then(toJson)
+            .then((json) => {
+                console.log(json);
+            });
     }
 
     render() {
         return (
-            <div className="input">
-                <form onSubmit={this.handleSubmit}>
+            <div className="formContainer">
+                <form className="form" onSubmit={this.handleSearchImages}>
                     <input
+                        className="input"
                         type="text"
-                        placeholder="Search free high-resolution photos"
+                        placeholder={"Search free high-resolution photos"}
                         value={this.state.keyword}
                         onChange={this.handleChange}
                     >
