@@ -25,6 +25,7 @@
   .form {
       display: flex;
       flex-direction: column;
+      padding: 10px 0px;
   }
 
   .input {
@@ -35,3 +36,16 @@
     cursor: pointer;
 
   }
+  
+  .imgList {
+    column-count: 3;
+  }
+
+.card {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.cardImage {
+    flex: 100%;
+}
