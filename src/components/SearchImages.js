@@ -6,7 +6,7 @@ const unsplash = new Unsplash({
     accessKey: "PUc2mcO-lkccQgrnP0cU25N6Gu-QP6q5mB4QrQF8GFo",
 });
 
-function SearchInput() {
+function SearchImages() {
     const [keyword, setKeyword] = useState("");
     const [images, setImages] = useState([]);
 
@@ -50,4 +50,4 @@ function SearchInput() {
     )
 }
 
-export default SearchInput;
+export default SearchImages;

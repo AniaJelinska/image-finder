@@ -1,5 +1,5 @@
 import './App.css';
-import SearchInput from './components/SearchInput';
+import SearchImages from './components/SearchImages';
 // import Autocomplete from './components/Autocomplete';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
         <h1 className="title">Unsplash</h1>
         <p>The internet's source of freely-usable images.</p>
         <p>Powered by creators everywhere.</p>
-        <SearchInput />
+        <SearchImages />
         {/* <Autocomplete /> */}
       </div>
     </div>
