@@ -1,53 +1,60 @@
 
 import React, { useState } from "react";
 import Unsplash, { toJson } from "unsplash-js";
+import { Card } from "react-bootstrap";
+import MyModal from "./MyModal";
 
 const unsplash = new Unsplash({
     accessKey: "PUc2mcO-lkccQgrnP0cU25N6Gu-QP6q5mB4QrQF8GFo",
 });
 
-function SearchImages() {
-    const [keyword, setKeyword] = useState("");
-    const [images, setImages] = useState([]);
 
+function SearchInput() {
+    const [query, setQuery] = useState("");
+    const [images, setImages] = useState([]);
+    const [modalShow, setModalShow] = useState(false);
 
     const handleSearchImages = async (e) => {
         e.preventDefault();
-        unsplash.search
-            .photos(keyword)
+        unsplash.search.photos(query, 1, 20)
             .then(toJson)
             .then((json) => {
                 setImages(json.results);
+                console.log(json.results)
             });
     }
     return (
         <>
+
             <div className="formContainer">
                 <form className="form" onSubmit={handleSearchImages}>
                     <input
                         className="input"
                         type="text"
                         placeholder={"Search free high-resolution photos"}
-                        value={keyword}
-                        onChange={(e) => setKeyword(e.target.value)}
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
                     >
                     </input>
                 </form>
                 <div className="imgList">
-                    {images.map((image) => <div className="card" key={image.id}>
-                        <img
-                            className="cardImage"
-                            alt={image.alt_description}
-                            src={image.urls.full}
-                            width="50%"
-                            height="50%"
-                        ></img>
-                    </div>)
-                    }
+                    {images.map((image) => <Card >
+                        <Card.Img onClick={() => setModalShow(true)} src={image.urls.small} alt={image.alt_description} />
+                        <MyModal
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                            data={image.urls.small}
+                            name={image.user.name}
+                            username={image.user.username}
+                            location={image.user.location}
+                            profileImage={image.user.profile_image.small}
+                        />
+                    </Card>
+                    )}
                 </div>
             </div>
         </>
     )
 }
 
-export default SearchImages;
+export default SearchInput;
