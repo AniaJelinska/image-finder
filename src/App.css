@@ -52,4 +52,14 @@
 
 .myModal {
    background: border-box;
+   
+}
+
+.modalImg {
+  width: 100%;
+}
+
+.modalHeader {
+  background: #fff;
+  border-bottom: none;
 }

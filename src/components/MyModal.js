@@ -10,16 +10,16 @@ function MyModal(props) {
             centered
             className="myModal"
         >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+            <Modal.Header className="modalHeader" closeButton>
+                <Modal.Title className="modalHeader" id="contained-modal-title-vcenter">
                     <Image src={props.profileImage} roundedCircle />
                     {props.name}
                     <br />
                     @{props.username}
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
-                <img src={props.data} />
+            <Modal.Body className="modalHeader">
+                <img className="modalImg" src={props.data} />
             </Modal.Body>
             <Modal.Footer>
                 {props.location}

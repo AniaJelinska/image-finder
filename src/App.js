@@ -1,6 +1,5 @@
 import './App.css';
 import SearchImages from './components/SearchImages';
-// import Autocomplete from './components/Autocomplete';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
         <p>The internet's source of freely-usable images.</p>
         <p>Powered by creators everywhere.</p>
         <SearchImages />
-        {/* <Autocomplete /> */}
       </div>
     </div>
   );

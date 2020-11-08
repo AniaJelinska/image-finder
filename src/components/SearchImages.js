@@ -27,7 +27,6 @@ function SearchInput() {
 
     return (
         <>
-
             <div className="formContainer">
                 <form className="form" onSubmit={handleSearchImages}>
                     <input
@@ -43,11 +42,10 @@ function SearchInput() {
                     {images.map((image) => {
                         return <Card key={image.id}>
                             <Card.Img onClick={() => setModalShow(image.id)} src={image.urls.small} alt={image.alt_description} />
-                            {/* <p>{image.tags.title}</p> */}
                             < MyModal
                                 show={modalShow === image.id}
                                 onHide={() => setModalShow(false)}
-                                data={image.urls.small}
+                                data={image.urls.full}
                                 name={image.user.name}
                                 username={image.user.username}
                                 location={image.user.location}
