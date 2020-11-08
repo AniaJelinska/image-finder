@@ -12,7 +12,8 @@ const unsplash = new Unsplash({
 function SearchInput() {
     const [query, setQuery] = useState("");
     const [images, setImages] = useState([]);
-    const [modalShow, setModalShow] = useState(false);
+    const [modalShow, setModalShow] = useState(0);
+
 
     const handleSearchImages = async (e) => {
         e.preventDefault();
@@ -23,6 +24,7 @@ function SearchInput() {
                 console.log(json.results)
             });
     }
+
     return (
         <>
 
@@ -38,18 +40,21 @@ function SearchInput() {
                     </input>
                 </form>
                 <div className="imgList">
-                    {images.map((image) => <Card >
-                        <Card.Img onClick={() => setModalShow(true)} src={image.urls.small} alt={image.alt_description} />
-                        <MyModal
-                            show={modalShow}
-                            onHide={() => setModalShow(false)}
-                            data={image.urls.small}
-                            name={image.user.name}
-                            username={image.user.username}
-                            location={image.user.location}
-                            profileImage={image.user.profile_image.small}
-                        />
-                    </Card>
+                    {images.map((image) => {
+                        return <Card key={image.id}>
+                            <Card.Img onClick={() => setModalShow(image.id)} src={image.urls.small} alt={image.alt_description} />
+                            {/* <p>{image.tags.title}</p> */}
+                            < MyModal
+                                show={modalShow === image.id}
+                                onHide={() => setModalShow(false)}
+                                data={image.urls.small}
+                                name={image.user.name}
+                                username={image.user.username}
+                                location={image.user.location}
+                                profileImage={image.user.profile_image.small}
+                            />
+                        </Card>
+                    }
                     )}
                 </div>
             </div>

@@ -8,6 +8,7 @@ function MyModal(props) {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            className="myModal"
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
@@ -28,3 +29,4 @@ function MyModal(props) {
 }
 
 export default MyModal;
+

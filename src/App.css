@@ -49,3 +49,7 @@
 .cardImage {
     flex: 100%;
 }
+
+.myModal {
+   background: border-box;
+}
